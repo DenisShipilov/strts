@@ -16,6 +16,10 @@
             <param-name>config/order</param-name>
             <param-value>/WEB-INF/struts-config-orders.xml</param-value>
         </init-param>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
         <load-on-startup>0</load-on-startup>
     </servlet>
 
@@ -28,4 +32,6 @@
     <welcome-file-list>
         <welcome-file>index.jspx</welcome-file>
     </welcome-file-list>
+
+
 </web-app>

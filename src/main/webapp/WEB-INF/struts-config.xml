@@ -10,4 +10,5 @@
             <forward name="success" path="/pages/information.jsp" />
         </action>
     </action-mappings>
+
 </struts-config>

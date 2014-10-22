@@ -5,6 +5,7 @@
 
 <struts-config>
 
+
 	<form-beans>
 		<form-bean name="userForm" type="actions.user.form.UserForm" />
 	</form-beans>
@@ -14,22 +15,23 @@
 			<forward name="success" path="/pages/all.jsp" />
 		</action>
 		<action path="/login" type="actions.user.action.LoginAction">
-			<forward name="success" path="/pages/login.jsp" />
+			<forward name="success" path="/logintile" />
 		</action>
 		<action path="/register" type="actions.user.action.RegisterUserAction"
 			name="userForm">
 			<forward name="success" path="/pages/regresult.jsp" />
 		</action>
         <!-- actions for crud -->
-        <action path="/Edituser" type="actions.user.action.EditUserAction" name="userForm">
-            <forward name="success" path="/pages/Edituser.jsp"></forward>
+        <action path="/*user" type="actions.user.action.{1}UserAction" name="userForm">
+            <forward name="success" path="/{1}user" ></forward>
             <forward name="falure" path="/pages/Edituser.jsp"></forward>
         </action>
-        <action path="/Adduser" type="actions.user.action.AddUserAction" name="userForm">
-            <forward name="success" path="/pages/user.jsp" />
-        </action>
-
     </action-mappings>
 
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
     <message-resources parameter="actions.user.action.package" />
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+    </plug-in>
+
 </struts-config>

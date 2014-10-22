@@ -1,23 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Denis_Shipilov
-  Date: 21.10.2014
-  Time: 17:25
-  To change this template use File | Settings | File Templates.
---%>
 <%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>
-        EditUser
-    </title>
-    <script src="/scripts/jquery-2.1.1.js" type="text/javascript"/>
-</head>
-<body>
+<div>
 <html:form action="/Adduser.do">
-    <table border="0" width="100%">
+    <table border="0">
         <tr>
             <th class="right">
                 <bean:message key="username"/>
@@ -42,7 +28,7 @@
                 <html:password property="password" size="16"/>
             </td>
         </tr>
-        tr>
+        <tr>
         <th class="right">
             <bean:message key="email"/>
         </th>
@@ -64,5 +50,4 @@
         </tr>
     </table>
 </html:form>
-</body>
-</html>
+</div>
