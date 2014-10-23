@@ -15,23 +15,26 @@
 			<forward name="success" path="/pages/all.jsp" />
 		</action>
 		<action path="/login" type="actions.user.action.LoginAction">
-			<forward name="success" path="/logintile" />
+			<forward name="success" path="logintile" />
 		</action>
 		<action path="/register" type="actions.user.action.RegisterUserAction"
 			name="userForm">
 			<forward name="success" path="/pages/regresult.jsp" />
 		</action>
         <!-- actions for crud -->
-        <action path="/*user" type="actions.user.action.{1}UserAction" name="userForm">
-            <forward name="success" path="/{1}user" ></forward>
+        <action path="/*user" type="actions.user.action.{1}UserAction" input="Edituser" parameter="id" name="userForm" validate="true">
+            <forward name="success" path="{1}user" ></forward>
             <forward name="falure" path="/pages/Edituser.jsp"></forward>
         </action>
     </action-mappings>
 
-    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
-    <message-resources parameter="actions.user.action.package" />
+    <message-resources parameter="actions.user.action.package" null="false" />
+
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+        <set-property property="definitions-parser-validate" value="true" />
+        <set-property property="moduleAware" value="true" />
     </plug-in>
+
 
 </struts-config>

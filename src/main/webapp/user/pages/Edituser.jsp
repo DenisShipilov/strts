@@ -1,12 +1,22 @@
 <%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
+<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="/scripts/jquery-2.1.1.js" type="application/javascript" ></script>
+<script src="/scripts/jquery-ui.js" type="application/javascript" ></script>
+<script src="/scripts/jquery.validate.min.js" type="application/javascript" ></script>
+<script src="/scripts/additional-methods.min.js" type="application/javascript" ></script>
 <div>
-<html:form action="/Adduser.do">
+    <div style="color: red;">
+        <ol>
+            <html:errors/>
+        </ol>
+    </div>
+<html:form  action="/Adduser.do">
     <table border="0">
         <tr>
             <th class="right">
-                <bean:message key="username"/>
+                <bean:message key="username" />
             </th>
             <td class="left">
                 <html:text  property="username" size="16"/>

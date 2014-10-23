@@ -9,15 +9,15 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <html>
 <body>
-<table  border="2" width="100%">
+<table align="center" border="1">
     <tr>
-        <td><tiles:insert attribute="header"/></td>
+        <td><tiles:insert name="header" attribute="header"/></td>
     </tr>
     <tr>
-        <td><tiles:insert attribute="body"/></td>
+        <td><tiles:insert name="body" attribute="body"/></td>
     </tr>
     <tr>
-        <td><tiles:insert attribute="footer"/></td>
+        <td><tiles:insert name="footer" attribute="footer"/></td>
     </tr>
 </table>
 </body>

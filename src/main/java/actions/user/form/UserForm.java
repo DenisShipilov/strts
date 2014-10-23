@@ -3,6 +3,8 @@ package actions.user.form;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.util.MessageResources;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
@@ -73,6 +75,14 @@ public class UserForm extends ActionForm implements Serializable {
 
     @Override
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        return super.validate(mapping, request);
+        ActionErrors actionErrors = new ActionErrors();
+        if(username != null && username.length() > 20) {
+            actionErrors.add("username",new ActionMessage("user.form.username.error",true));
+        }
+        if(nickname != null &&nickname.length() > 20) {
+            actionErrors.add("nickname",new ActionMessage("error.nickname"));
+        }
+
+        return actionErrors;
     }
 }

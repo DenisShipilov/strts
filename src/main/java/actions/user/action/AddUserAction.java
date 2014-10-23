@@ -1,10 +1,7 @@
 package actions.user.action;
 
 import actions.user.form.UserForm;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +17,8 @@ public class AddUserAction extends Action {
         UserForm user = (UserForm)form;
         user.setUsername("zhppa");
         user.setPassword("popa");
-        return mapping.findForward(result);
+        //redirect to user form
+        ActionRedirect redirect = new ActionRedirect("Getuser");
+        return redirect;
     }
 }

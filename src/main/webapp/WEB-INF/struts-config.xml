@@ -7,8 +7,14 @@
 <struts-config>
     <action-mappings>
         <action path="/info" type="actions.order.action.GetallAction">
-            <forward name="success" path="/pages/information.jsp" />
+            <forward name="success" path="infotile" />
         </action>
     </action-mappings>
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+        <set-property property="definitions-parser-validate" value="true" />
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
 
 </struts-config>
