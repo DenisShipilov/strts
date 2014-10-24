@@ -11,19 +11,10 @@
     $(document).ready(function(){
         $("form").validate(
                 {
+                    focusInvalid: false,
                     focusCleanup: true,
+                    errorElement: "em",
                     validClass: "success",
-                    groups:{
-                        userparams: "username email"
-                    },
-                    errorPlacement: function(error, element) {
-                        if(element.attr("name") == "email" &&  element.attr("name") == "username") {
-                            error.insertAfter("form");
-                        } else {
-                            error.insertAfter("#errordiv");
-                        }
-
-                    },
                     rules:{
                         username: "required",
                         email:{
