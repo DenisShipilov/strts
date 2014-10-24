@@ -6,8 +6,48 @@
 <script src="/scripts/jquery-ui.js" type="application/javascript" ></script>
 <script src="/scripts/jquery.validate.min.js" type="application/javascript" ></script>
 <script src="/scripts/additional-methods.min.js" type="application/javascript" ></script>
+<script type="application/javascript">
+    //script here
+    $(document).ready(function(){
+        $("form").validate(
+                {
+                    focusCleanup: true,
+                    validClass: "success",
+                    groups:{
+                        userparams: "username email"
+                    },
+                    errorPlacement: function(error, element) {
+                        if(element.attr("name") == "email" &&  element.attr("name") == "username") {
+                            error.insertAfter("form");
+                        } else {
+                            error.insertAfter("#errordiv");
+                        }
+
+                    },
+                    rules:{
+                        username: "required",
+                        email:{
+                            errorClass: "errorEmail",
+                            required: true,
+                            email: true
+                        }
+
+                    },
+                    messages:{
+                        username: "<bean:message key="user.form.username.error" />",
+                        email:{
+                            required: "<bean:message key="user.form.email.error" />",
+                            email: "<bean:message key="user.form.email.empty.error" />"
+                        }
+                    }
+                }
+        )
+
+    });
+
+</script>
 <div>
-    <div style="color: red;">
+    <div id="errordiv" style="color: red;">
         <ol>
             <html:errors/>
         </ol>

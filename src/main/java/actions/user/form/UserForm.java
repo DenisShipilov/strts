@@ -83,6 +83,8 @@ public class UserForm extends ActionForm implements Serializable {
             actionErrors.add("nickname",new ActionMessage("error.nickname"));
         }
 
+
+
         return actionErrors;
     }
 }
