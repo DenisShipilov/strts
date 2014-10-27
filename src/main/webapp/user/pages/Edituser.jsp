@@ -6,34 +6,51 @@
 <script src="/scripts/jquery-ui.js" type="application/javascript" ></script>
 <script src="/scripts/jquery.validate.min.js" type="application/javascript" ></script>
 <script src="/scripts/additional-methods.min.js" type="application/javascript" ></script>
+<link rel="stylesheet" href="/scripts/jquery-ui.min.css">
+<link rel="stylesheet" href="/scripts/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="/scripts/jquery-ui.theme.min.css">
+
 <script type="application/javascript">
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });
     //script here
     $(document).ready(function(){
         $("form").validate(
                 {
-                    focusInvalid: false,
-                    focusCleanup: true,
-                    errorElement: "em",
+                    errorClass: "error",
                     validClass: "success",
+                    errorElement: "em",
                     rules:{
                         username: "required",
                         email:{
-                            errorClass: "errorEmail",
-                            required: true,
-                            email: true
-                        }
+                            depends: function(element){return $("#confpassword").val == $("#password").val},
+                            email: true,
+                            required: true
+                        },
+                        confpassword:{
+                            depends: "username"
+                        },
+                        birthstring: "birtstring"
 
                     },
                     messages:{
                         username: "<bean:message key="user.form.username.error" />",
                         email:{
-                            required: "<bean:message key="user.form.email.error" />",
-                            email: "<bean:message key="user.form.email.empty.error" />"
+                            required: "<bean:message key="user.form.email.empty.error" />",
+                            email: "<bean:message key="user.form.email.error" />",
+                            depends: "<bean:message key="user.form.comfpassword.error" />"
                         }
                     }
                 }
         )
-
+        $("#birtstring" ).datepicker("option","dateFormat","yy-MON-YYYY");
     });
 
 </script>
@@ -58,7 +75,7 @@
                 <bean:message key="password"/>
             </th>
             <td class="left">
-                <html:password property="password" size="16"/>
+                <html:password styleId="password" property="password" size="16"/>
             </td>
         </tr>
         <tr>
@@ -66,7 +83,7 @@
                 <bean:message key="confpassword"/>
             </th>
             <td class="left">
-                <html:password property="password" size="16"/>
+                <html:password styleId="confpassword" property="confpassword" size="16"/>
             </td>
         </tr>
         <tr>
@@ -76,6 +93,14 @@
         <td class="left">
             <html:text property="email" size="16"/>
         </td>
+        </tr>
+        <tr>
+            <th class="right">
+                <bean:message key="birtstring"/>
+            </th>
+            <td class="left">
+                <html:text styleId="birtstring" property="birtstring" size="16"/>
+            </td>
         </tr>
         <tr>
             <td class="right">

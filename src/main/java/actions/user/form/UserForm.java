@@ -19,11 +19,34 @@ public class UserForm extends ActionForm implements Serializable {
 
     private String password;
 
+    public String getConfpassword() {
+        return confpassword;
+    }
+
+    public void setConfpassword(String confpassword) {
+        this.confpassword = confpassword;
+    }
+
+    private String confpassword;
+
     private String email;
 
     private String nickname;
 
     private Date birthdate;
+
+
+
+
+    public String getBirtstring() {
+        return birtstring;
+    }
+
+    public void setBirtstring(String birtstring) {
+        this.birtstring = birtstring;
+    }
+
+    private String birtstring;
 
     public UserForm() {
     }
@@ -56,6 +79,8 @@ public class UserForm extends ActionForm implements Serializable {
 
         this.email = email;
     }
+
+
 
     public String getNickname() {
         return nickname;
