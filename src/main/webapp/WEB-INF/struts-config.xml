@@ -6,7 +6,7 @@
 
 <struts-config>
     <action-mappings>
-        <action path="/info" type="actions.order.action.GetallAction">
+        <action path="/info" type="actions.order.action.GetOrderAction">
             <forward name="success" path="infotile" />
         </action>
     </action-mappings>

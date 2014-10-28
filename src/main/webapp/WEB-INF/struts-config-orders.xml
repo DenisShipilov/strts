@@ -8,16 +8,20 @@
 		<form-bean name="orderform" type="actions.order.form.OrderForm" />
 	</form-beans>
 	<action-mappings>
-		<action path="/getall" type="actions.order.action.GetallAction">
+		<action path="/getall" type="actions.order.action.GetOrderAction">
 			<forward name="success" path="/pages/all.jsp" />
 		</action>
+        <action path="/*order" type="actions.order.action{1}OrderAction" name="orderform" validate="true">
+            <forward name="success" path="/{1}order" />
+        </action>
+
 	</action-mappings>
 
     <message-resources parameter="actions.user.action.package" null="false" />
 
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
         <set-property property="pathnames"
-                      value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-user.xml"/>
+                      value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-order.xml"/>
 
     </plug-in>
 

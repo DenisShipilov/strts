@@ -4,13 +4,13 @@
 
 <form-validation>
    <formset>
-      <form name="userForm">
+      <form name="orderform">
          <field property="username" depends="required,maxlength,minlength,mask">
          
-         	<msg name="required" key="err.user.username.required" />
-			<msg name="maxlength" key="err.user.username.length" />
-			<msg name="minlength" key="err.user.username.length" />
-			<msg name="mask" key="err.user.username.invalid" />
+         	<msg name="required" key="order.username.required" />
+			<msg name="maxlength" key="error.order.username.format" />
+			<msg name="minlength" key="error.order.username.length" />
+			<msg name="mask" key="error.order.username.format" />
 
 			<arg name="maxlength" key="${var:minlength}" position="0" resource="false"/>
             <arg name="maxlength" key="${var:maxlength}" position="1" resource="false"/>
@@ -34,12 +34,12 @@
 			
          </field>
          
-         <field property="pwd" depends="required,maxlength,minlength,mask">
+         <field property="ordernumber" depends="required,maxlength,minlength,mask">
          
-         	<msg name="required" key="err.user.pwd.required" />
-			<msg name="maxlength" key="err.user.pwd.length" />
-			<msg name="minlength" key="err.user.pwd.length" />
-			<msg name="mask" key="err.user.pwd.invalid" />
+         	<msg name="required" key="order.ordernumber.required" />
+			<msg name="maxlength" key="error.order.ordernumber.length" />
+			<msg name="minlength" key="error.order.ordernumber.length" />
+			<msg name="mask" key="error.order.ordernumber.format" />
 
 			<arg name="maxlength" key="${var:minlength}" position="0" resource="false"/>
             <arg name="maxlength" key="${var:maxlength}" position="1" resource="false"/>
@@ -58,31 +58,55 @@
             
             <var>
 				<var-name>mask</var-name>
-				<var-value>^[a-zA-Z0-9]*$</var-value>
+				<var-value>^[0-9]*$</var-value>
 			</var>
 			
          </field>
-         
-         <field property="pwd2" depends="validwhen">
-         
-         	<msg name="validwhen" key="err.user.pwd2.notmatch" />
-         
-			<var>
-				<var-name>test</var-name>
-				<var-value>
-					(pwd == *this*)
-				</var-value>
-				</var>
-		 </field>
 
-		 <field property="email" depends="required,email">
-		 
-		 	<msg name="required" key="err.user.email.required" />
-		 	<msg name="email" key="err.user.email.invalid" />
+          <field property="registrationdate" depends="required,validwhen,mask">
+              <msg key="order.registrationdate.required" name="required" />
+              <msg key="error.order.registrationdate.format" name="mask" />
+              <msg key="error.order.registrationdate.biggerthen" name="validwhen" />
 
-		 </field>
-		 
-		
+              <var>
+                  <var-name>datePatternStrict</var-name>
+                  <var-value>dd/mm/yyyy</var-value>
+              </var>
+            </field>
+
+          <field property="expiredate" depends="required,validwhen,mask">
+              <msg key="order.expiredate.required" name="required" />
+              <msg key="error.order.expiredate.format" name="mask" />
+              <msg key="error.order.expiredate.lessthen" name="validwhen" />
+              <var>
+                  <var-name>datePatternStrict</var-name>
+                  <var-value>dd/mm/yyyy</var-value>
+              </var>
+              <var>
+                  <var-name>test</var-name>
+                  <var-value>
+                      ((expiredate > registrationdate) or (*this* == null))
+                  </var-value>
+              </var>
+          </field>
+
+          <field property="useremail" depends="required,email">
+              <msg key="error.user.email.format" name="email" />
+              <msg key="error.user.email.required" name="required" />
+
+          </field>
+
+          <field property="userid" depends="required,minlength,maxlength" >
+              <msg key="error.order.userid.required" name="required" />
+              <msg key="error.order.userid.length" name="minlength"/>
+              <msg key="error.order.userid.length" name="maxlength"/>
+          </field>
+          
+          <field property="bill" depends="required,minlength,maxlength" >
+              <msg key="error.order.bill.required" name="required" />
+              <msg key="error.order.ordernumber.length" name="maxlength" />
+              <msg key="error.order.ordernumber.length" name="minlength" />
+          </field>
 		
      </form>
   </formset>

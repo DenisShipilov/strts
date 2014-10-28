@@ -9,8 +9,9 @@
 <c:set var="url" value="${pageContext.request.requestURL}"/>
 <c:set var="uri" value="${pageContext.request.requestURI}"/>
 <c:set var="path" value="${fn:substringBefore(url, uri)}"/>
-<button type="button" onclick="window.location='user/getusers.do'">другие пользователи</button>
-<button type="button" onclick="window.location='user/register.do'">Пользователь</button>
+<button type="button" onclick="window.location='${path}/order/Editorder.do'">Редактирование счёта</button>
+<button type="button" onclick="window.location='${path}/user/getusers.do'">Другие пользователи</button>
+<button type="button" onclick="window.location='${path}/user/register.do'">Пользователь</button>
 
 
 </body>
