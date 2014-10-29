@@ -6,26 +6,34 @@
 <script src="/scripts/jquery-ui.js" type="application/javascript" ></script>
 <script src="/scripts/jquery.validate.min.js" type="application/javascript" ></script>
 <script src="/scripts/additional-methods.min.js" type="application/javascript" ></script>
+<script src="/scripts/jquery-dateFormat.min.js" type="application/javascript" ></script>
 <link rel="stylesheet" href="/scripts/jquery-ui.min.css">
 <link rel="stylesheet" href="/scripts/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="/scripts/jquery-ui.theme.min.css">
 <script type="application/javascript" >
-
+    $(document).ready(function(){
+        $("#regdate").datepicker();
+        $("#regdate").datepicker("option", "altField", "#regdate");
+        $("#regdate").datepicker("option", "altFormat", "dd/mm/yy");
+        $("#expdate").datepicker();
+        $("#expdate").datepicker("option", "altField", "#expdate");
+        $("#expdate").datepicker("option", "altFormat", "dd/mm/yy");
+    });
 </script>
 <div>
-    <div id="errordiv" style="color: red;">
-        <ol>
-            <html:errors/>
-        </ol>
+    <div id="erroddiv" style="color: red;">
+        <ul>
+        <html:errors prefix="err.prefix" suffix="err.suffix"/>
+        </ul>
     </div>
-    <html:form action="/Addorder.do">
+    <html:form action="/addorder.do">
         <table border="0" >
             <tr>
                 <th class="right">
                     <bean:message key="order.ordernumber" />
                 </th>
                 <td>
-                    <html:textarea property="ordernumber" />
+                    <html:text property="ordernumber" />
                 </td>
             </tr>
             <tr>
@@ -33,7 +41,7 @@
                     <bean:message key="order.registrationdate" />
                 </th>
                 <td>
-                    <html:textarea property="registrationdate" />
+                    <html:text styleId="regdate" property="registrationdate" />
                 </td>
             </tr>
             <tr>
@@ -41,7 +49,7 @@
                     <bean:message key="order.expiredate" />
                 </th>
                 <td>
-                    <html:textarea property="expiredate" />
+                    <html:text styleId="expdate" property="expiredate" />
                 </td>
             </tr>
             <tr>
@@ -49,7 +57,7 @@
                     <bean:message key="order.bill" />
                 </th>
                 <td>
-                    <html:textarea property="bill" />
+                    <html:text property="bill" />
                 </td>
             </tr>
             <tr>
@@ -57,7 +65,7 @@
                     <bean:message key="order.userid" />
                 </th>
                 <td>
-                    <html:textarea property="userid" />
+                    <html:text property="userid" />
                 </td>
             </tr>
             <tr>
@@ -65,7 +73,7 @@
                     <bean:message key="order.username" />
                 </th>
                 <td>
-                    <html:textarea property="username" />
+                    <html:text property="username" />
                 </td>
             </tr>
             <tr>
@@ -73,10 +81,22 @@
                     <bean:message key="order.useremail" />
                 </th>
                 <td>
-                    <html:textarea property="useremail" />
+                    <html:text property="useremail" />
                 </td>
             </tr>
         </table>
+        <tr>
+            <td class="right">
+                <div align="center">
+                <html:submit>
+                    <bean:message key="user.action.sumbit"/>
+                </html:submit>
+                <html:reset>
+                    <bean:message key="user.action.reset"/>
+                </html:reset>
+                </div>
+            </td>
+        </tr>
     </html:form>
 
 </div>

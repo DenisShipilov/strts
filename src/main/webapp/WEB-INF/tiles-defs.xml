@@ -36,13 +36,18 @@
         <put name="body" value="/user/pages/Adduser.jsp"/>
         <put name="footer" value="/pages/footer.jsp"/>
     </definition>
-    <!-- crud for user -->
-    <definition name="Edirorder" extends="layout">
+    <!-- crud for order -->
+    <definition name="Editorder" extends="layout">
         <put name="header" value="/pages/header.jsp"/>
         <put name="body" value="/order/pages/Editorder.jsp"/>
         <put name="footer" value="/pages/footer.jsp"/>
     </definition>
     <definition name="Getorder" extends="layout">
+        <put name="header" value="/pages/header.jsp"/>
+        <put name="body" value="/order/pages/Getorder.jsp"/>
+        <put name="footer" value="/pages/footer.jsp"/>
+    </definition>
+    <definition name="Registerorder" extends="layout">
         <put name="header" value="/pages/header.jsp"/>
         <put name="body" value="/order/pages/Getorder.jsp"/>
         <put name="footer" value="/pages/footer.jsp"/>

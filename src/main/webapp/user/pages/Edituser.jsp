@@ -11,11 +11,6 @@
 <link rel="stylesheet" href="/scripts/jquery-ui.theme.min.css">
 
 <script type="application/javascript">
-    function validateEmail(email) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
-
     jQuery.validator.setDefaults({
         debug: true,
         success: "valid"
