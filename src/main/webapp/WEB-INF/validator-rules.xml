@@ -413,6 +413,31 @@
                    msg=""
                    jsFunction="org.apache.commons.validator.javascript.validateUtilities"/>
 
+
+
+        <!-- Custom date validators -->
+        <validator name="afterthan"
+                   classname="validators.DateValidator"
+                   method="isAfterThan"
+                   methodParams="java.lang.Object,
+                       org.apache.commons.validator.Validator,
+                       org.apache.commons.validator.Field,
+                       org.apache.struts.action.ActionErrors,
+                       javax.servlet.http.HttpServletRequest"
+                   depends=""
+                   msg="errors.afterthan"/>
+
+        <validator name="beforethan"
+                   classname="validators.DateValidator"
+                   method="isBeforeThan"
+                   methodParams="java.lang.Object,
+                       org.apache.commons.validator.Validator,
+                       org.apache.commons.validator.Field,
+                       org.apache.struts.action.ActionErrors,
+                       javax.servlet.http.HttpServletRequest"
+                   depends=""
+                   msg="errors.beforethan"/>
+
     </global>
 
 </form-validation>

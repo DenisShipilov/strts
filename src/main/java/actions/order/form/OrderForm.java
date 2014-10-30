@@ -20,7 +20,7 @@ public class OrderForm extends ValidatorForm {
 
     private  BigInteger bill ;
 
-    private BigInteger ordernumber;
+    private Integer ordernumber;
 
     private String username;
 
@@ -29,19 +29,14 @@ public class OrderForm extends ValidatorForm {
     private String useremail;
 
 
-    public String getRegistrationdate() {
+    public Date getRegistrationdate() {
         if(registrationdate == null)
             registrationdate = new Date();
-        return registrationdate.toString();
+        return registrationdate;
     }
 
-    public void setRegistrationdate(String registrationdate) {
-        try {
-            this.registrationdate = new SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(registrationdate);
-        } catch (ParseException e) {
-            this.registrationdate = new Date();
-            e.printStackTrace();
-        }
+    public void setRegistrationdate(Date registrationdate) {
+            this.registrationdate = registrationdate;
     }
 
     public String getExpiredate() {
@@ -50,13 +45,8 @@ public class OrderForm extends ValidatorForm {
         return expiredate.toString();
     }
 
-    public void setExpiredate(String expiredate) {
-        try {
-            this.expiredate = new SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(expiredate);
-        } catch (ParseException e) {
-            this.expiredate = new Date();
-            e.printStackTrace();
-        }
+    public void setExpiredate(Date expiredate) {
+            this.expiredate = expiredate;
     }
 
     public BigInteger getBill() {
@@ -64,19 +54,28 @@ public class OrderForm extends ValidatorForm {
     }
 
     public void setBill(BigInteger bill) {
-        if(bill == null)
-            bill = BigInteger.ZERO;
         this.bill = bill;
     }
 
-    public BigInteger getOrdernumber() {
+    public Integer getOrdernumber() {
         return ordernumber;
     }
 
-    public void setOrdernumber(BigInteger ordernumber) {
-        if(ordernumber == null)
-            ordernumber = BigInteger.ZERO;
-        this.ordernumber = ordernumber;
+    public void setOrdernumber(Integer ordernumber) {
+        if(ordernumber == null) {
+            this.ordernumber = 0;
+        } else {
+            this.ordernumber = ordernumber;
+        }
+
+    }
+
+    public void setOrdernumber(String ordernumber) {
+        if(ordernumber == null) {
+            this.ordernumber = 0;
+        } else {
+            this.ordernumber = Integer.valueOf(ordernumber);
+        }
     }
 
     public String getUsername() {

@@ -1,7 +1,6 @@
 <!DOCTYPE form-validation PUBLIC
         "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
         "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
-
 <form-validation>
    <formset>
       <form name="orderform">
@@ -34,12 +33,12 @@
 			
          </field>
          
-         <field property="ordernumber" depends="required,maxlength,minlength,mask">
+         <field property="ordernumber" depends="required,maxlength,minlength,integer">
          
          	<msg name="required" key="order.ordernumber.required" />
 			<msg name="maxlength" key="order.error.ordernumber.length" />
 			<msg name="minlength" key="order.error.ordernumber.length" />
-			<msg name="mask" key="order.error.ordernumber.format" />
+			<msg name="integer" key="order.error.ordernumber.format" />
 
 			<arg name="maxlength" key="${var:minlength}" position="0" resource="false"/>
             <arg name="maxlength" key="${var:maxlength}" position="1" resource="false"/>
@@ -49,63 +48,56 @@
             
             <var>
             	<var-name>minlength</var-name>
-				<var-value>7</var-value>
+				<var-value>3</var-value>
 			</var>		
 			<var>
 				<var-name>maxlength</var-name>
-				<var-value>15</var-value>
-			</var>
-            
-            <var>
-				<var-name>mask</var-name>
-				<var-value>^[\d]+$</var-value>
+				<var-value>8</var-value>
 			</var>
 			
          </field>
 
-          <field property="registrationdate" depends="validwhen,date">
-              <msg key="order.registrationdate.required" name="required" />
-              <msg key="order.error.registrationdate.format" name="mask" />
-              <msg key="order.error.registrationdate.biggerthen" name="validwhen" />
+          <field property="registrationdate" depends="required,beforethan">
+              <msg key="order.error.registrationdate.required" name="required"/>
+              <msg key="order.error.registrationdate.biggerthen" name="beforethan" />
               <var>
-                  <var-name>datePatternStrict</var-name>
-                  <var-value>dd/mm/yyyy</var-value>
+                  <var-name>beforethan</var-name>
+                  <var-value>expiredate</var-value>
               </var>
-            </field>
+          </field>
 
-          <field property="expiredate" depends="validwhen,date">
+          <field property="expiredate" depends="required,afterthan">
               <msg key="order.expiredate.required" name="required" />
-              <msg key="order.error.expiredate.format" name="mask" />
-              <msg key="order.error.expiredate.lessthen" name="validwhen" />
+              <msg key="order.error.expiredate.before" name="afterthan" />
               <var>
-                  <var-name>datePatternStrict</var-name>
-                  <var-value>dd/mm/yyyy</var-value>
+                  <var-name>afterthan</var-name>
+                  <var-value>registrationdate</var-value>
               </var>
+          </field>
+
+          <field property="bill" depends="required,maxlength,long">
+              <msg key="order.error.bill.required" name="required"/>
+              <msg key="order.error.bill.length" name="maxlength"/>
+              <msg key="order.error.bill.format" name="long" />
+              <arg name="maxlength" key="${var:maxlength}" position="0" resource="false"/>
               <var>
-                  <var-name>test</var-name>
-                  <var-value>
-                      ((expiredate > registrationdate) and (*this* != null))
-                  </var-value>
+                  <var-name>maxlength</var-name>
+                  <var-value>7</var-value>
               </var>
+          </field>
+
+          <field property="userid" depends="required,integer" >
+              <msg key="order.error.userid.required" name="required" />
+              <msg key="order.error.userid.format" name="integer" />
+
           </field>
 
           <field property="useremail" depends="required,email">
               <msg key="error.user.email.format" name="email" />
               <msg key="error.user.email.required" name="required" />
-
-          </field>
-
-          <field property="userid" depends="required,minlength,maxlength" >
-              <msg key="order.error.userid.required" name="required" />
-              <msg key="order.error.userid.length" name="minlength"/>
-              <msg key="order.error.userid.length" name="maxlength"/>
           </field>
           
-          <field property="bill" depends="required,minlength,maxlength" >
-              <msg key="order.error.bill.required" name="required" />
-              <msg key="order.error.ordernumber.length" name="maxlength" />
-              <msg key="order.error.ordernumber.length" name="minlength" />
-          </field>
+
 		
      </form>
   </formset>

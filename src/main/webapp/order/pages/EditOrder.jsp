@@ -30,6 +30,14 @@
         <table border="0" >
             <tr>
                 <th class="right">
+                    <bean:message key="order.username" />
+                </th>
+                <td>
+                    <html:text property="username" />
+                </td>
+            </tr>
+            <tr>
+                <th class="right">
                     <bean:message key="order.ordernumber" />
                 </th>
                 <td>
@@ -66,14 +74,6 @@
                 </th>
                 <td>
                     <html:text property="userid" />
-                </td>
-            </tr>
-            <tr>
-                <th class="right">
-                    <bean:message key="order.username" />
-                </th>
-                <td>
-                    <html:text property="username" />
                 </td>
             </tr>
             <tr>

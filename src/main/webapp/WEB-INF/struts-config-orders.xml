@@ -5,7 +5,10 @@
 
 <struts-config>
 	<form-beans>
-		<form-bean name="orderform" type="actions.order.form.OrderForm" />
+		<form-bean name="orderform" type="actions.order.form.OrderForm">
+            <form-property name="bill" type="java.math.BigInteger" />
+		</form-bean>
+
 	</form-beans>
 	<action-mappings>
 		<action path="/getall" type="actions.order.action.GetOrderAction">
@@ -33,5 +36,7 @@
         <set-property property="definitions-parser-validate" value="true" />
         <set-property property="moduleAware" value="true" />
     </plug-in>
+    
+    <plug-in className="plugins.TypeConverterPlugin" />
 
 </struts-config>
