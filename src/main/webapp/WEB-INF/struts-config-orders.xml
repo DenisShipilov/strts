@@ -17,7 +17,7 @@
         <action path="/addorder" type="actions.order.action.RegisterOrderAction" input="Editorder" name="orderform" validate="true">
             <forward name="success" path="Registerorder" />
         </action>
-        <action path="/Editorder" type="actions.order.action.EditOrderAction" parameter="Editorder" />
+        <action path="/Editorder" type="org.apache.struts.actions.ForwardAction" parameter="Editorder" />
 
         <action path="/Getorder" type="actions.order.action.GetOrderAction">
             <forward name="success" path="Getorder" />
