@@ -1,22 +1,27 @@
 package actions.order.form;
 
 
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.validator.Resources;
 import org.apache.struts.validator.ValidatorForm;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+
 
 /**
  * Created by Denis_Shipilov on 13.10.2014.
  */
 public class OrderForm extends ValidatorForm {
 
-    private Date registrationdate;
+    private String registrationdate;
 
-    private Date expiredate;
+    private String expiredate;
 
     private  BigInteger bill ;
 
@@ -29,24 +34,44 @@ public class OrderForm extends ValidatorForm {
     private String useremail;
 
 
-    public Date getRegistrationdate() {
-        if(registrationdate == null)
-            registrationdate = new Date();
+    public String getRegistrationdate() {
         return registrationdate;
     }
 
-    public void setRegistrationdate(Date registrationdate) {
-            this.registrationdate = registrationdate;
+    public Date getRegistrationDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date d = null;
+        try {
+            d= sdf.parse(registrationdate);
+        } catch (ParseException e) {
+            d = new Date();
+            e.printStackTrace();
+        }
+        return d;
+    }
+
+    public void setRegistrationdate(String registrationdate) {
+       this.registrationdate = registrationdate;
     }
 
     public String getExpiredate() {
-        if(expiredate == null)
-            expiredate = new Date();
-        return expiredate.toString();
+        return expiredate;
     }
 
-    public void setExpiredate(Date expiredate) {
-            this.expiredate = expiredate;
+    public Date getExpireDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date d = null;
+        try {
+            d= sdf.parse(expiredate);
+        } catch (ParseException e) {
+            d = new Date();
+            e.printStackTrace();
+        }
+        return d;
+    }
+
+    public void setExpiredate(String expiredate) {
+            this.expiredate =expiredate;
     }
 
     public BigInteger getBill() {
@@ -68,14 +93,6 @@ public class OrderForm extends ValidatorForm {
             this.ordernumber = ordernumber;
         }
 
-    }
-
-    public void setOrdernumber(String ordernumber) {
-        if(ordernumber == null) {
-            this.ordernumber = 0;
-        } else {
-            this.ordernumber = Integer.valueOf(ordernumber);
-        }
     }
 
     public String getUsername() {
@@ -101,4 +118,5 @@ public class OrderForm extends ValidatorForm {
     public void setUseremail(String useremail) {
         this.useremail = useremail;
     }
+
 }

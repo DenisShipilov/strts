@@ -23,6 +23,6 @@ public class TypeConverterPlugin implements PlugIn {
     @Override
     public void init(ActionServlet actionServlet, ModuleConfig moduleConfig) throws ServletException {
        ConvertUtils.register(new BigIntegerConverter(), BigInteger.class);
-       ConvertUtils.register(new DateConverter(), Date.class);
+       //ConvertUtils.register(new DateConverter(), Date.class);
     }
 }

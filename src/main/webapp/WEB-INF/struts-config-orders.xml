@@ -14,11 +14,13 @@
 		<action path="/getall" type="actions.order.action.GetOrderAction">
 			<forward name="success" path="/pages/all.jsp" />
 		</action>
-        <action path="addorder" type="actions.order.action.RegisterOrderAction" input="Editorder" name="orderform" validate="true">
+        <action path="/addorder" type="actions.order.action.RegisterOrderAction" input="Editorder" name="orderform" validate="true">
             <forward name="success" path="Registerorder" />
         </action>
-        <action path="/*order" type="actions.order.action.{1}OrderAction" input="Editorder" name="orderform" validate="true">
-            <forward name="success" path="/{1}order" />
+        <action path="/Editorder" type="actions.order.action.EditOrderAction" parameter="Editorder" />
+
+        <action path="/Getorder" type="actions.order.action.GetOrderAction">
+            <forward name="success" path="Getorder" />
         </action>
 
 	</action-mappings>

@@ -57,18 +57,28 @@
 			
          </field>
 
-          <field property="registrationdate" depends="required,beforethan">
+          <field property="registrationdate" depends="required,date,beforethan">
               <msg key="order.error.registrationdate.required" name="required"/>
-              <msg key="order.error.registrationdate.biggerthen" name="beforethan" />
+              <msg key="order.error.registrationdate.format" name="date"/>
+              <msg key="order.error.registrationdate.biggerthen" name="beforethan"/>
+              <var>
+                  <var-name>datePattern</var-name>
+                  <var-value>dd/MM/yyyy</var-value>
+              </var>
               <var>
                   <var-name>beforethan</var-name>
                   <var-value>expiredate</var-value>
               </var>
           </field>
 
-          <field property="expiredate" depends="required,afterthan">
+          <field property="expiredate" depends="required,date,afterthan">
               <msg key="order.expiredate.required" name="required" />
-              <msg key="order.error.expiredate.before" name="afterthan" />
+              <msg key="order.error.expiredate.format" name="date"/>
+              <msg key="order.error.expiredate.before" name="afterthan"/>
+              <var>
+                  <var-name>datePattern</var-name>
+                  <var-value>dd/MM/yyyy</var-value>
+              </var>
               <var>
                   <var-name>afterthan</var-name>
                   <var-value>registrationdate</var-value>

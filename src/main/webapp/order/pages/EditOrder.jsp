@@ -12,12 +12,20 @@
 <link rel="stylesheet" href="/scripts/jquery-ui.theme.min.css">
 <script type="application/javascript" >
     $(document).ready(function(){
-        $("#regdate").datepicker();
-        $("#regdate").datepicker("option", "altField", "#regdate");
-        $("#regdate").datepicker("option", "altFormat", "dd/mm/yy");
-        $("#expdate").datepicker();
-        $("#expdate").datepicker("option", "altField", "#expdate");
-        $("#expdate").datepicker("option", "altFormat", "dd/mm/yy");
+        $("#regdate").datepicker({
+            minDate: -20,
+            maxDate: "+1M +10D",
+            dateFormat: "dd/mm/yy",
+            altFormat: "dd/mm/yy",
+            altField: "#regdate"
+        });
+        $("#expdate").datepicker({
+            minDate: -20,
+            maxDate: "+1M +10D",
+            dateFormat: "dd/mm/yy",
+            altFormat: "dd/mm/yy",
+            altField: "#expdate"
+        });
     });
 </script>
 <div>
