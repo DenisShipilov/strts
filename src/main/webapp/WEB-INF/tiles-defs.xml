@@ -39,7 +39,7 @@
     <!-- crud for order -->
     <definition name="Editorder" extends="layout">
         <put name="header" value="/pages/header.jsp"/>
-        <put name="body" value="/order/pages/Editorder.jsp"/>
+        <put name="body" value="/order/pages/EditOrder.jsp"/>
         <put name="footer" value="/pages/footer.jsp"/>
     </definition>
     <definition name="Getorder" extends="layout">

@@ -26,6 +26,43 @@
             altFormat: "dd/mm/yy",
             altField: "#expdate"
         });
+
+        $("form").validate(
+                {
+                    debug: true,
+                    submitHandler: function(form) {
+                            $(form).ajaxSubmit();
+                    },
+                    rules: {
+                        username: {
+                            required: true,
+                            minlength: 3
+                        },
+                        ordernumber: {
+                            required: true,
+                            minlength: 3
+                        },
+                        regdate: {
+                            required: true
+                        },
+                        expdate: {
+                            required: true
+                        },
+                        bill: {
+                            required: true
+                        },
+                        userid: {
+                            required: true
+                        },
+                        useremail: {
+                            required: true,
+                            email: true
+                        }
+
+                    }
+                }
+        );
+
     });
 </script>
 <div>
